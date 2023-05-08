@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sidebar CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/d271a3c797.js" crossorigin="anonymous">
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="boton--abrir-sidebar">
+      <i class="fa-solid fa-bars fa-xl"></i>
+    </div>
+    <article class="sidebar-container">
+      <div class="sidebar">
+        <section class="cabecera">
+          <h2 class="cabecera__title">CARRITO</h2>
+          <div class="cabecera__boton--cerrar-sidebar" title="Cerrar">
+            <i class="fa-regular fa-x fa-xl"></i>
+          </div>
+        </section>
+        <div>
+          <section class="principal">
+            <ul class="productos">
+              <li class="producto producto1">
+                <a href="" class="producto__imagen">
+                  <picture>
+                    <img
+                      width="50"
+                      height="50"
+                      src="img/logo.jpg"
+                      alt="Imagen de flor"
+                    />
+                  </picture>
+                </a>
+                <div>
+                  <a href="">
+                    <h3 class="producto__datos">Love Craft</h3>
+                  </a>
+                  <p class="producto__precio">1 x S/139.00</p>
+                </div>
+                <div
+                  class="producto__eliminar"
+                  title="Eliminar"
+                  onclick="eliminarProducto(this)"
+                >
+                  <i class="fa-regular fa-trash-can"></i>
+                </div>
+              </li>
+              <li class="producto producto2">
+                <a href="" class="producto__imagen">
+                  <picture>
+                    <img
+                      width="50"
+                      height="50"
+                      src="img/logo.jpg"
+                      alt="Imagen de flor"
+                    />
+                  </picture>
+                </a>
+                <div>
+                  <a href="">
+                    <h3 class="producto__datos">Box Pink</h3>
+                  </a>
+                  <p class="producto__precio">1 x S/139.00</p>
+                </div>
+                <div
+                  class="producto__eliminar"
+                  title="Eliminar"
+                  onclick="eliminarProducto(this)"
+                >
+                  <i class="fa-regular fa-trash-can"></i>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <article class="carrito-ver">
+            <section class="total-precio">
+              <h3 class="total-precio__texto">SUBTOTAL:</h3>
+              <h3 class="total-precio__precio">S/100.00</h3>
+            </section>
+            <div class="carrito-enlace">
+              <a class="carrito-enlace__boton" href="">VER CARRITO</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Carrito sin productos -->
+        <section class="sin-productos">
+          <h3>No hay productos en el carrito</h3>
+        </section>
+      </div>
+    </article>
+
+    <script>
+      // Declarar variables
+      const sidebarContainer = document.querySelector(".sidebar-container");
+      const sidebar = document.querySelector(".sidebar");
+      const abrirSidebar = document.querySelector(".boton--abrir-sidebar");
+      const cerrarSidebar = document.querySelector(
+        ".cabecera__boton--cerrar-sidebar"
+      );
+      const eliminar_producto = document.querySelector(".producto__eliminar");
+
+      // Abrir sidebar
+      abrirSidebar.addEventListener("click", () => {
+        sidebarContainer.classList.toggle("sidebar-container--toggle");
+        sidebar.classList.toggle("sidebar--active");
+      });
+
+      // Cerrar sidebar
+      cerrarSidebar.addEventListener("click", () => {
+        sidebarContainer.classList.toggle("sidebar-container--toggle");
+        sidebar.classList.toggle("sidebar--active");
+      });
+
+      // window click
+      window.addEventListener("click", (e) => {
+        if (e.target == sidebarContainer) {
+          sidebarContainer.classList.toggle("sidebar-container--toggle");
+          sidebar.classList.toggle("sidebar--active");
+        }
+      });
+
+      // Eliminar producto
+      const eliminarProducto = (producto) => {
+        const liPadre = producto.parentNode;
+        liPadre.remove();
+      };
+    </script>
+  </body>
+</html>
